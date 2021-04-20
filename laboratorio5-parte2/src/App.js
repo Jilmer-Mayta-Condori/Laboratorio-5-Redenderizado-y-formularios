@@ -12,6 +12,20 @@ const App = ({ nombre: initialName }) => {
     setNewName(name)
   }
 
+  const ValidarNombre = (nombreRecibido) => {
+    let contador = 0
+    for (var x = 0; x < nombre.length ; x++){
+      if (nombre[x].name.toUpperCase() === nombreRecibido.toUpperCase()){
+        contador++
+      }
+    }
+    if (contador === 1){
+      return false
+    }else{
+      return true
+    }
+  }
+
   const handleClick = (event) => {
     event.preventDefault()
     
@@ -20,10 +34,19 @@ const App = ({ nombre: initialName }) => {
       name: newName
     }
 
-    setNombre([
-      ... nombre,
-      nuevoNombre
-    ])
+    if (ValidarNombre(newName) === true){
+      setNombre([
+        ... nombre,
+        nuevoNombre
+      ])
+      console.log("No se Repite")
+    }else{
+      window.alert(`${newName} is already added to phonebook`);
+    }
+
+
+
+    
 
     setNewName('')
 
