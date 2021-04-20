@@ -1,25 +1,25 @@
-
+import CabeceraComponent from './Components/CabeceraComponent';
+import TemaComponent from './Components/TemaComponent';
+import EjerciciosComponent from './Components/EjerciciosComponent';
+import SumaEjerciciosComponent from './Components/SumaEjerciciosComponent';
 
 const Course = (props) => {
 
-  const total = props.course.parts.reduce(
-    (contenedor, EjerciosPropuestos) => 
-      contenedor + EjerciosPropuestos.exercises, 0
-  );
+  
   return (
     <div>
       <header style={{textAlign: 'center'}}>
-        <h1 > CURSO: {props.course.name} </h1>
+        <CabeceraComponent nombreCurso={props.course}></CabeceraComponent>
       </header>
       <div>
         <div>  Tareas: {props.course.parts.map((cour) => 
           <div key={cour.id} >
-             <p> TEMA: {cour.name}</p>
-             <p> EJERCICIOS: { cour.exercises}</p>
+            <TemaComponent tema={cour.name}></TemaComponent>
+            <EjerciciosComponent ejercicios={cour.exercises}></EjerciciosComponent>
           </div>
         )} 
         </div>
-        <div> Total de Ejercicios propuestos: {total} </div>
+        <SumaEjerciciosComponent curso={props.course}></SumaEjerciciosComponent>
 
       </div>
     </div> 
