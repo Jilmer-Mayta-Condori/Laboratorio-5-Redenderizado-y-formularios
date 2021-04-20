@@ -1,6 +1,11 @@
 
 
 const Course = (props) => {
+
+  const total = props.course.parts.reduce(
+    (contenedor, EjerciosPropuestos) => 
+      contenedor + EjerciosPropuestos.exercises, 0
+  );
   return (
     <div>
       <header style={{textAlign: 'center'}}>
@@ -12,10 +17,12 @@ const Course = (props) => {
              <p> TEMA: {cour.name}</p>
              <p> EJERCICIOS: { cour.exercises}</p>
           </div>
-        )} </div>
+        )} 
+        </div>
+        <div> Total de Ejercicios propuestos: {total} </div>
 
       </div>
-    </div>
+    </div> 
     
   );
 }
