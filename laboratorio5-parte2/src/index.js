@@ -4,7 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const nombres = [ {id:1, name: 'Arto Hellas'}, {id:2,name: 'Arto'}]
+const nombres = [
+  {
+    id:1, 
+    name: 'Arto Hellas', 
+    number: 989846262
+  },
+  {
+    id:2,
+    name: 'Arto',
+    number: 987654321
+  }
+]
 
 ReactDOM.render(
   <React.StrictMode>

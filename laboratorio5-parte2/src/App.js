@@ -6,10 +6,17 @@ const App = ({ nombre: initialName }) => {
 
   const [ newName, setNewName ] = useState('')
 
+  const [ newNumber, setNewNumber ] = useState('')
+
 
   const handleChange = (event) => {
     const name = event.target.value
     setNewName(name)
+  }
+
+  const handleChangeNumber = (event) => {
+    const num = event.target.value
+    setNewNumber(num)
   }
 
   const ValidarNombre = (nombreRecibido) => {
@@ -31,23 +38,21 @@ const App = ({ nombre: initialName }) => {
     
     const nuevoNombre = {
       id: nombre.length + 1,
-      name: newName
+      name: newName,
+      number: newNumber,
     }
 
     if (ValidarNombre(newName) === true){
       setNombre([
         ... nombre,
-        nuevoNombre
+        nuevoNombre 
       ])
       console.log("No se Repite")
     }else{
       window.alert(`${newName} is already added to phonebook`);
     }
 
-
-
-    
-
+    setNewNumber('')
     setNewName('')
 
   }
@@ -58,7 +63,8 @@ const App = ({ nombre: initialName }) => {
       <h2>Phonebook</h2>
       <form onSubmit={handleClick}>
         <div>
-          name: <input onChange= {handleChange}  value={newName}/>
+          name: <input onChange= {handleChange}  value={newName}/><br/>
+          number: <input onChange= {handleChangeNumber}  value={newNumber}/>
         </div>
         <div>
           <button>add</button>
@@ -68,7 +74,7 @@ const App = ({ nombre: initialName }) => {
       <ol>
         {nombre.map((nom) =>
         <li key={nom.id}>
-          <p>{nom.name}</p>
+          <p>{nom.name} {nom.number}</p>
         </li>
         )}
       </ol>
